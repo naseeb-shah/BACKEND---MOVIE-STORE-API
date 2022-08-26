@@ -17,6 +17,27 @@ mongoose.connect(url,(err,res)=>{
 
 var app= express()
 
+
+
+app.get('/p',(req,res)=>{
+  
+pagenumber=req.query.page
+  move.find((err,data)=>{
+    if(err)
+    res.send(err)
+    else
+    res.send(data)
+    
+  }).skip(5*((+pagenumber)-1)).limit(5)
+  
+  
+      // res.send("youare in the moveapp")
+  })
+
+
+
+
+
 app.get('/search',(req,res)=>{
   
  q=req.query.name
